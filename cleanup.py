@@ -24,9 +24,6 @@ for page in range(2, 251):
 with open('data.json', 'w', encoding='utf-8') as f:
     json.dump(data, f, ensure_ascii=False, indent=4) """
 
-# openai.api_key = os.getenv("OPEN_API_KEY")
-# openai.api_key = "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"
-
 # Specify the path to your JSON file
 json_file_path = 'updated_data.json'
 with open(json_file_path, 'r') as file:
