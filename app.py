@@ -1,8 +1,16 @@
 # app.py
-from flask import Flask
+from flask import Flask, jsonify
+from flask_cors import CORS
+
+
 app = Flask(__name__)
+CORS(app)
 
 
-@app.route('/')
+@app.route('/api')
 def hello():
-    return "Hello, Flask!"
+    return jsonify(message="Hello from Flask!")
+
+
+if __name__ == '__main__':
+    app.run(debug=True)

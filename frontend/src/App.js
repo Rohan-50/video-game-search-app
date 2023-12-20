@@ -4,9 +4,10 @@ function App() {
   const [message, setMessage] = useState('');
 
   useEffect(() => {
-    fetch('/api')  // '/api' is the route defined in the Flask app
+    fetch('/api')
       .then(response => response.json())
-      .then(data => setMessage(data.message));
+      .then(data => setMessage(data.message))
+      .catch(error => console.error('Error fetching data:', error));
   }, []);
 
   return (
