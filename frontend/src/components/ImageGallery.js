@@ -10,6 +10,7 @@ const ImageGallery = () => {
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
+      marginBottom: '100px',
     };
   
     const galleryImageStyle = {
