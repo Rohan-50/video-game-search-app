@@ -2,6 +2,11 @@ import React from 'react';
 import { AppBar, Toolbar, IconButton, Typography, Button, TextField } from '@mui/material';
 import GamepadIcon from '@mui/icons-material/Gamepad';
 
+const appButtonStyle = {
+  margin: '0 10px',
+  textTransform: 'none',
+};
+
 const MyAppBar = () => {
   return (
     <AppBar position="static" color='info'>
@@ -15,9 +20,15 @@ const MyAppBar = () => {
         </Typography>
 
         {/* Text Buttons */}
-        <Button color="inherit">New</Button>
-        <Button color="inherit">Popular</Button>
-        <Button color="inherit">Top Rated</Button>
+        <Button color="inherit" style={appButtonStyle}>
+          New Games
+        </Button>
+        <Button color="inherit" style={appButtonStyle}>
+          Most Popular
+        </Button>
+        <Button color="inherit" style={appButtonStyle}>
+          Top Rated
+        </Button>
 
         {/* Search Bar */}
         <TextField
@@ -25,7 +36,7 @@ const MyAppBar = () => {
           label="Search"
           variant="outlined"
           size="small"
-          sx={{ marginLeft: 2 }}
+          sx={{ marginLeft: 2, width: '400px' }}
         />
       </Toolbar>
     </AppBar>

@@ -17,6 +17,11 @@ function App() {
       .then(data => setMessage(data.message))
       .catch(error => console.error('Error fetching data:', error));
   }, []);
+  
+  const buttonStyle = {
+    height: '50px',
+    textTransform: 'none',
+  };
 
   return (
     <div className="App">
@@ -25,11 +30,11 @@ function App() {
         <Typography variant="h3" sx={{ marginTop: "200px", marginBottom: "50px", fontWeight: "600" }}>
           Your guide for finding the perfect game
         </Typography>
-        <Stack direction="row" spacing={2} sx={{ justifyContent: 'center', marginBottom: '200px' }}>
-          <Button variant="contained" color='success' size='large' sx={{ height: '50px' }}>
-            Discover Popular Games
+        <Stack direction="row" spacing={2} sx={{ justifyContent: 'center', marginBottom: '200px'}}>
+          <Button variant="contained" color='success' size='large' style={buttonStyle}>
+            Discover Games
           </Button>
-          <Button variant="outlined" size='large' sx={{ height: '50px' }}>
+          <Button variant="outlined" size='large' style={buttonStyle}>
             Search Feature
           </Button>
         </Stack>
