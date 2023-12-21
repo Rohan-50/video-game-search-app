@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
-import CardGrid from './components/CardGrid';
+import ImageGallery from './components/ImageGallery';
 import Navbar from './components/Navbar';
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
@@ -22,7 +22,7 @@ function App() {
     <div className="App">
       <Navbar />
       <div>
-        <Typography variant="h3" style={{ marginTop: "200px", marginBottom: "50px", fontWeight: "600" }}>
+        <Typography variant="h3" sx={{ marginTop: "200px", marginBottom: "50px", fontWeight: "600" }}>
           Your guide for finding the perfect game
         </Typography>
         <Stack direction="row" spacing={2} sx={{ justifyContent: 'center', marginBottom: '200px' }}>
@@ -33,6 +33,10 @@ function App() {
             Search Feature
           </Button>
         </Stack>
+        <Typography variant="h6" sx={{color: 'gray', marginBottom: '20px'}}>
+          Platforms available on JustPlay
+        </Typography>
+        <ImageGallery/>
       </div>
     </div>
   );
