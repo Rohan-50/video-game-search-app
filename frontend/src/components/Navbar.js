@@ -1,9 +1,9 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { AppBar, Toolbar, IconButton, Typography, Button, TextField } from '@mui/material';
 import GamepadIcon from '@mui/icons-material/Gamepad';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
-// Define a custom theme with the desired colors
 const theme = createTheme({
   components: {
     MuiTextField: {
@@ -32,24 +32,28 @@ const theme = createTheme({
   },
 });
 
-const appButtonStyle = {
-  margin: '0 10px',
-  textTransform: 'none',
-};
+const Navbar = () => {
+  
+  const appButtonStyle = {
+    margin: '0 10px',
+    textTransform: 'none',
+  };
 
-const MyAppBar = () => {
+  const navigate = useNavigate();
+
+  const handleLogoClick = () => {
+      navigate('/');
+  };
+
   return (
     <AppBar position="sticky" sx={{ color: 'grey', backgroundColor: '#000000' }}>
       <Toolbar>
-        {/* Gamepad Icon Logo and Title */}
-        <IconButton edge="start" color="inherit" aria-label="gamepad">
+        <IconButton edge="start" color="inherit" aria-label="gamepad" onClick={handleLogoClick}>
           <GamepadIcon />
         </IconButton>
-        <Typography variant="h4" component="div" sx={{ flexGrow: 1, textAlign: 'left' }}>
+        <Typography variant="h4" component="div" onClick={handleLogoClick} sx={{ flexGrow: 1, textAlign: 'left' }}>
           JustPlay
         </Typography>
-
-        {/* Text Buttons */}
         <Button color="inherit" style={appButtonStyle}>
           New Games
         </Button>
@@ -59,7 +63,6 @@ const MyAppBar = () => {
         <Button color="inherit" style={appButtonStyle}>
           Top Rated
         </Button>
-
         <ThemeProvider theme={theme}>
           <TextField
             id="outlined-basic"
@@ -74,4 +77,4 @@ const MyAppBar = () => {
   );
 };
 
-export default MyAppBar;
+export default Navbar;

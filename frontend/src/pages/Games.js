@@ -4,7 +4,6 @@ import Navbar from '../components/Navbar';
 import GameCard from '../components/GameCard';
 
 const GamesPage = () => {
-  // Placeholder data, replace with actual data when available
   const gameCards = Array.from({ length: 60 }, (_, index) => index + 1);
 
   return (
