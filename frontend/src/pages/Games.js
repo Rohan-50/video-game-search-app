@@ -1,23 +1,32 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Typography, Container, Grid, Select, MenuItem } from '@mui/material';
 import Navbar from '../components/Navbar';
 import GameCard from '../components/GameCard';
 
 const GamesPage = () => {
-  const gameCards = Array.from({ length: 60 }, (_, index) => index + 1);
+  const [games, setGames] = useState([]);
+
+  useEffect(() => {
+    fetch('/api/games')
+      .then(response => response.json())
+      .then(data => {
+        console.log('API Response:', data);
+        setGames(data.games);
+      })
+      .catch(error => console.error('Error fetching games data:', error));
+  }, []);
+  
 
   return (
-    <div style={{backgroundColor: 'black', color: 'white' }}>
+    <div style={{ backgroundColor: 'black', color: 'white' }}>
       <Navbar />
       <Container sx={{ marginTop: '20px' }}>
         <Typography variant="h5" gutterBottom>
           What can you view on JustPlay?
         </Typography>
         <Typography variant="body1" paragraph>
-          {/* Your paragraph placeholder */}
           This is a placeholder for the content that describes what users can view on JustPlay.
         </Typography>
-
         {/* Filter dropdowns */}
         <Grid container spacing={2} sx={{ marginBottom: '20px' }}>
           {/* Add your filter dropdowns here */}
@@ -35,7 +44,7 @@ const GamesPage = () => {
 
         {/* Number of games placeholder */}
         <Typography variant="body1" sx={{ marginBottom: '10px' }}>
-          1246 games
+          {games.length} games
         </Typography>
 
         {/* Sorting dropdown */}
@@ -49,9 +58,14 @@ const GamesPage = () => {
 
         {/* Game cards */}
         <Grid container spacing={2}>
-          {gameCards.map((gameId) => (
-            <Grid item key={gameId} xs={12} sm={6} md={4} lg={3} xl={2}>
-              <GameCard />
+          {games.map((game) => (
+            <Grid item key={game.id} xs={12} sm={6} md={4} lg={3} xl={2}>
+              <GameCard
+                image={game.background_image}
+                name={game.name}
+                rating={game.rating}
+                reviewsCount={game.reviews_count}
+              />
             </Grid>
           ))}
         </Grid>
